@@ -1,0 +1,205 @@
+﻿<Window x:Class="HrmApp.ViewNhanVien.QuanLyHopDongNhanVien"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HrmApp.ViewNhanVien"
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        Title="Quản lý hợp đồng nhân viên" Height="600" Width="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/img/bg_green2.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+
+        <Label Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="7" Grid.RowSpan="2" Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Center" VerticalContentAlignment="Top" FontSize="20" FontWeight="Bold">QUẢN LÝ HỢP ĐỒNG NHÂN VIÊN</Label>
+        <GroupBox Header="Tìm kiếm hợp đồng" Margin="10,50,10,10" Height="80" Padding="10" VerticalAlignment="Top">
+            <StackPanel>
+                <Grid x:Name="grdMain1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" >
+                        </RowDefinition>
+                    </Grid.RowDefinitions>
+                    <!--Tên nhân viên-->
+                    <Label Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" FontSize="14" >Tên nhân viên</Label>
+                    <TextBox x:Name="txtTenNhanVienTimKiem" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2" Margin="2" Text=""  TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" FontSize="14" />
+                    <!--Số loại hợp đồng-->
+                    <Label Grid.Column="5" Grid.Row="3" Grid.ColumnSpan="2" Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" FontSize="14" >Loại hợp đồng</Label>
+                    <TextBox x:Name="txtLoaiHopDongTimKiem" Grid.Column="7" Grid.Row="3" Grid.ColumnSpan="2" Margin="2" Text=""  TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" FontSize="14" />
+                    <Button x:Name="btnTimKiem" Grid.Column="10" Grid.Row="3" Margin="2" Grid.ColumnSpan="2" Click="btnTimKiem_Click" FontSize="14" >Tìm kiếm</Button>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="Quản lý thông tin hợp đồng nhân viên" Margin="10,140,10,10" Height="150" Padding="10" VerticalAlignment="Top">
+            <StackPanel>
+                <Grid x:Name="grdMain3" Height="100">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" >
+                        </RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <!--Thêm sửa xóa hợp đồng nhân viên-->
+                    <Label Grid.Column="0" Visibility="Hidden" Content="0" Name="lblIdHopDongNhanVien" Grid.Row="0" VerticalAlignment="Stretch" HorizontalAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold"></Label>
+                    <!--Tên nhân viên-->
+                    <Label Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="14" >Tên nhân viên</Label>
+                    <ComboBox x:Name="cbbNhanVien" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="3" Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="12">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle HorizontalAlignment="Left" Fill="{Binding Id}" Width="16" Height="16" Margin="0,2,5,2" />
+                                    <TextBlock HorizontalAlignment="Left" Text="{Binding HoTen}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <!--Loại hợp đồng-->
+
+                    <Label Grid.Column="6" Grid.Row="0" Grid.ColumnSpan="2" Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right"  VerticalContentAlignment="Center" FontSize="14" >Loại hợp đồng</Label>
+                    <ComboBox x:Name="cbbLoaiHopDong" Grid.Column="8" Grid.Row="0" Grid.ColumnSpan="3" Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="12">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle HorizontalAlignment="Left" Fill="{Binding Id}" Width="16" Height="16" Margin="0,2,5,2" />
+                                    <TextBlock HorizontalAlignment="Left" Text="{Binding TenLoaiHopDong}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <!--Quê quán-->
+
+                    <!--Từ ngày-->
+
+                    <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" FontSize="14" >Từ ngày</Label>
+                    <DatePicker x:Name="dateTuNgay" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="3" Margin="2" Text=""  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" FontSize="14"/>
+
+                    <!--Đến ngày-->
+
+                    <Label Grid.Column="6" Grid.Row="1" Grid.ColumnSpan="2" Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right"  VerticalContentAlignment="Center" FontSize="14" >Đến ngày</Label>
+                    <DatePicker x:Name="dateDenNgay" Grid.Column="8" Grid.Row="1" Grid.ColumnSpan="3" Margin="2" Text=""  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" FontSize="14"/>
+
+
+                    <!--Chức năng-->
+
+                    <Button x:Name="btnThemHopDong" Grid.Column="5" Grid.Row="2" Margin="2,2,2,0" Grid.ColumnSpan="2" Click="btnThemHopDong_Click" FontSize="14" >Thêm mới</Button>
+                    <Button x:Name="btnCapNhatHopDong" Grid.Column="7" Grid.Row="2" Margin="2" Grid.ColumnSpan="2" Click="btnCapNhatHopDong_Click" FontSize="14" >Cập nhật</Button>
+                    <Button x:Name="btnXoaHopDong" Grid.Column="9" Grid.Row="2" Margin="2" Grid.ColumnSpan="2" Click="btnXoaHopDong_Click" FontSize="14" >Xóa</Button>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <Grid x:Name="grdMain2" Margin="0,300,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <DataGrid IsReadOnly="True" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="12" Grid.RowSpan="7" HorizontalAlignment="Stretch" AutoGenerateColumns="False"  Name="dataGrid1" VerticalAlignment="Top" SelectionChanged="dataGrid1_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Width="50" Binding="{Binding Id}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Họ tên" Width="200" Binding="{Binding HoTen}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Header="Loại hợp đồng" Width="100" Binding="{Binding TenLoaiHopDong}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Số điện thoại" Width="100" Binding="{Binding SoDienThoai}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Từ ngày" Width="100" Binding="{Binding TuNgay , StringFormat=dd-MM-yyyy}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Đến ngày" Width="100" Binding="{Binding DenNgay , StringFormat=dd-MM-yyyy}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <DatePicker HorizontalAlignment="Left" Margin="971,140,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
