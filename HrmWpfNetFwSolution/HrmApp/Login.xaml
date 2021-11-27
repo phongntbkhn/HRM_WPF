@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HrmApp"
         mc:Ignorable="d"
-        Title="Login" Height="600" Width="400">
+        Title="Login" Height="300" Width="400">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/img/bg_green2.jpg" Stretch="UniformToFill"/>
@@ -37,9 +37,9 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             <Image Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="2" Source="/login.png" ></Image>
-            <Label  Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="4" Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" FontSize="12" FontWeight="Bold">Tên đăng nhập</Label>
+            <Label  Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="4" Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" FontSize="10" FontWeight="Bold">Tên đăng nhập</Label>
             <TextBox x:Name="txtTaiKhoan"  Grid.Column="5" Grid.Row="3" Grid.ColumnSpan="6" Margin="2" Text=""  TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" FontSize="12" />
-            <Label FontWeight="Bold" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="4" Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" FontSize="12">Mật khẩu</Label>
+            <Label FontWeight="Bold" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="4" Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" FontSize="10">Mật khẩu</Label>
             <PasswordBox x:Name="txtMatKhau" Grid.Column="5" Grid.Row="4" Grid.ColumnSpan="6" Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" FontSize="12" />
             <Button FontWeight="Bold" x:Name="btnLogin" Grid.Column="5" Grid.Row="5" Margin="2" Grid.ColumnSpan="6" Click="btnLogin_Click" FontSize="14" >Đăng nhập</Button>
         </Grid>
