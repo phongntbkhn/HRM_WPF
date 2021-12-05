@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HrmApp.ViewThongKeBaoCao"
         xmlns:Viewer="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer" x:Class="HrmApp.ViewThongKeBaoCao.RP_DanhSachNhanVien"
         mc:Ignorable="d"
-        Title="Danh sách nhân viên" Height="600" Width="800">
+        Title="Danh sách nhân viên" Height="1600" Width="1000">
     <Grid>
 
         <Viewer:CrystalReportsViewer Name="crDsNhanVien" HorizontalAlignment="Left" Height="571" VerticalAlignment="Top" Width="794"/>
